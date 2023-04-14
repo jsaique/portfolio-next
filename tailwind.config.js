@@ -21,9 +21,9 @@ module.exports = {
       white: "#fff",
       "white-a08": "rgba(255, 255, 255, .08 )",
       subtitle: "#b4bcd0",
+      background: "#000212",
       grey: "#8a8f98",
       "grey-dark": "#222326",
-      background: "#000212",
     },
     spacing: {
       0: "0",

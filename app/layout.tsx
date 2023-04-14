@@ -23,7 +23,7 @@ export default function RootLayout({
       <body>
         <div>
           <Header />
-          <main className="pt-[var(--navigation-height)]">{children} </main>
+          <main className="pt-navigation-height">{children}</main>
           <footer>
             <Container className="">footer</Container>
           </footer>
