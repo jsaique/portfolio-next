@@ -1,6 +1,6 @@
 import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "./globals.css";
-import { Container } from "@/components/container";
 
 export const metadata = {
   title: "John Aries Saique",
@@ -24,9 +24,7 @@ export default function RootLayout({
         <div>
           <Header />
           <main className="pt-navigation-height">{children}</main>
-          <footer>
-            <Container className="">footer</Container>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>
