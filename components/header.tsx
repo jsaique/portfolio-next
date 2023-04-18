@@ -31,7 +31,7 @@ export const Header = () => {
   }, [setHamburgerMenuIsOpen]);
 
   return (
-    <header className="fixed top-0 left-0 w-full border-b border-white-a08 backdrop-blur-[12px]">
+    <header className="fixed top-0 left-0 w-full border-b border-transparent-white backdrop-blur-[12px]">
       <Container className="flex h-[var(--navigation-height)]">
         <Link className="flex items-center text-md" href="/">
           <Logo className="mr-[.5rem]" />
@@ -45,7 +45,7 @@ export const Header = () => {
           )}
         >
           <nav
-            // classNames dynamicaly add the visible class
+            // classNames dynamicaly add the opacity class
             className={classNames(
               "h-[calc(100vh_-_var(--navigation-height))] md:block fixed top-navigation-height left-0 w-full bg-background overflow-auto transition-opacity duration-500 md:relative md:top-0 md:h-auto md:w-auto md:bg-transparent md:opacity-100 md:transition-none", //[md:translate-x-0]
               hamburgerMenuIsOpen
@@ -57,8 +57,8 @@ export const Header = () => {
             <ul
               className={classNames(
                 "flex flex-col md:flex-row md:items-center h-full [&_li]:ml-6 [&_li]:border-b [&_li]:border-grey-dark md:[&_li]:border-none",
-                "ease-in [&_a]:h-navigation-height [&_a]:flex [&_a]:items-center [&_a]:text-md [&_a:hover]:text-grey [&_a]:transition-[color, transform] [&_a]:md:transition-colors md:[&_a]:text-sm [&_a]:translate-y-8 md:[&_a]:translate-y-0 overflow-y-hidden [&_a]:duration-300",
-                hamburgerMenuIsOpen && "[&_a]:translate-y-0"
+                "ease-in [&_a]:h-navigation-height [&_a]:flex [&_a]:items-center [&_a]:text-lg [&_a:hover]:text-grey [&_a]:transition-[color, transform] [&_a]:md:transition-colors md:[&_a]:text-md [&_a]:translate-y-8 md:[&_a]:translate-y-[.01rem] overflow-y-hidden [&_a]:duration-300",
+                hamburgerMenuIsOpen && "[&_a]:translate-y-[.01rem]"
               )}
             >
               <li className="md:hidden lg:block">
@@ -78,7 +78,10 @@ export const Header = () => {
         </div>
 
         <div className="flex items-center ml-auto h-full">
-          <Link className="text-sm mr-6" href="">
+          <Link
+            className="text-sm mr-6 hover:text-grey transition-colors ease-in"
+            href=""
+          >
             Hire me
           </Link>
           <Button href="cv.pdf" download="cv.pdf">

@@ -1,7 +1,7 @@
 export const GitHubIcon = () => (
   <svg
-    width="18"
-    height="18"
+    width="25"
+    height="25"
     viewBox="0 0 16 16"
     fill="currentColor"
     role="img"
