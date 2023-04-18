@@ -16,14 +16,16 @@ export default function Homepage() {
           Lorem ipsum dolor sit amet
           <IconWrapper>→</IconWrapper>
         </Button>
-        <HeroTitle className="animate-fade-in">John Aries Saique</HeroTitle>
-        <HeroSubtitle className="animate-fade-in">
+        <HeroTitle className="animate-fade-in [--animation-delay:200ms]">
+          John Aries Saique
+        </HeroTitle>
+        <HeroSubtitle className="animate-fade-in [--animation-delay:400ms]">
           I am a self-taught frontend developer who is
           <br className="hidden md:block" /> passionate about creating beautiful
           website and learning new skills.
         </HeroSubtitle>
         <Button
-          className="animate-fade-in"
+          className="animate-fade-in [--animation-delay:600ms]"
           href="/"
           variant="primary"
           size="large"
