@@ -6,7 +6,7 @@ import { HeroImage } from "@/components/icons/hero-image";
 
 export default function Homepage() {
   return (
-    <Container className="pt-[6.4rem]">
+    <Container className="overflow-hidden pt-[6.4rem]">
       <Hero>
         <Button
           className="animate-fade-in opacity-0 translate-y-[-1rem]"
