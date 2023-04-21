@@ -19,7 +19,30 @@ export const HeroImage = () => {
           inView && "before:animate-image-glow"
         )}
       >
-        <img className="relative z-10" src="/img/code.jpg" alt="code image" />
+        <svg
+          width="100%"
+          viewBox="0 0 1499 778"
+          fill="none"
+          className={classNames(
+            "[&_path]:stroke-white [&_path]:[stroke-opacity:0.2] [&_path]:[stroke-dasharray:1] [&_path]:[stroke-dashoffset:1]",
+            inView && "[&_path]:animate-sketch-lines"
+          )}
+        >
+          <path pathLength="1" d="M1500 72L220 72"></path>
+          <path pathLength="1" d="M1500 128L220 128"></path>
+          <path pathLength="1" d="M1500 189L220 189"></path>
+          <path pathLength="1" d="M220 777L220 1"></path>
+          <path pathLength="1" d="M538 777L538 128"></path>
+        </svg>
+
+        <img
+          className={classNames(
+            "relative z-10 opacity-0 transition-opacity delay-[600ms]",
+            inView && "opacity-100"
+          )}
+          src="/img/code.jpg"
+          alt="code image"
+        />
         {/* Photo by
       <a href="https://unsplash.com/@mitchel3uo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
         Mitchell Luo

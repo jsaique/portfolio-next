@@ -31,7 +31,7 @@ export const Header = () => {
   }, [setHamburgerMenuIsOpen]);
 
   return (
-    <header className="fixed top-0 left-0 w-full border-b border-transparent-white backdrop-blur-[12px]">
+    <header className="fixed top-0 left-0 z-10 w-full border-b border-transparent-white backdrop-blur-[12px]">
       <Container className="flex h-[var(--navigation-height)]">
         <Link className="flex items-center text-md" href="/">
           <Logo className="mr-[.5rem]" />
