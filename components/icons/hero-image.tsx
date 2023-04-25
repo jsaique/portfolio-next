@@ -1,15 +1,53 @@
 "use client";
 
 import classNames from "classnames";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+
+// Genrate a random numaber between
+const randomNumberBetween = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+interface Line {
+  id: string;
+  direction: "to bottom" | "to right";
+  size: number;
+  duration: number;
+}
 
 export const HeroImage = () => {
   const { ref, inView } = useInView({ threshold: 0.4, triggerOnce: true });
-  const [lines, setLines] = useState([
-    { direction: "to bottom", duration: 2000, size: 20 },
-    { direction: "to right", duration: 3000, size: 15 },
+  const [lines, setLines] = useState<Line[]>([
+    // { direction: "to bottom", duration: 2000, size: 20, id: "test1" },
+    // { direction: "to right", duration: 3000, size: 15, id: "test2" },
   ]);
+
+  // Removing the lines after the animation
+  const removeLine = (id: string) => {
+    setLines((prev) => prev.filter((line) => line.id !== id));
+  };
+
+  // Line interval
+  useEffect(() => {
+    if (!inView) return;
+
+    const renderLine = (timeout: number) => {
+      setTimeout(() => {
+        setLines((lines) => [
+          ...lines,
+          {
+            direction: Math.random() > 0.5 ? "to bottom" : "to right",
+            duration: randomNumberBetween(1300, 3500),
+            size: randomNumberBetween(10, 30),
+            id: Math.random().toString(36).substring(7),
+          },
+        ]);
+        renderLine(randomNumberBetween(800, 2500));
+      }, timeout);
+    };
+    renderLine(randomNumberBetween(800, 1300));
+  }, [inView, setLines]);
 
   return (
     // Wraping div to add perspective
@@ -25,6 +63,8 @@ export const HeroImage = () => {
         <div className="absolute top-0 left-0 z-20 h-full w-full">
           {lines.map((line) => (
             <span
+              // Removing the lines after animation
+              onAnimationEnd={() => removeLine(line.id)}
               style={
                 {
                   "--direction": line.direction,
