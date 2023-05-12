@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import { CSSProperties, useState, useEffect } from "react";
+import { CSSProperties, useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
 // Genrate a random numaber between
@@ -18,10 +18,8 @@ interface Line {
 
 export const HeroImage = () => {
   const { ref, inView } = useInView({ threshold: 0.4, triggerOnce: true });
-  const [lines, setLines] = useState<Line[]>([
-    // { direction: "to bottom", duration: 2000, size: 20, id: "test1" },
-    // { direction: "to right", duration: 3000, size: 15, id: "test2" },
-  ]);
+  const [lines, setLines] = useState<Line[]>([]);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Removing the lines after the animation
   const removeLine = (id: string) => {
@@ -33,7 +31,7 @@ export const HeroImage = () => {
     if (!inView) return;
 
     const renderLine = (timeout: number) => {
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setLines((lines) => [
           ...lines,
           {
@@ -47,6 +45,10 @@ export const HeroImage = () => {
       }, timeout);
     };
     renderLine(randomNumberBetween(800, 1300));
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [inView, setLines]);
 
   return (
