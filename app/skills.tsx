@@ -8,8 +8,11 @@ import { TypeScript } from "@/components/logos/typescript";
 
 export const Skills = () => (
   <>
-    <p>My Skills</p>
-    <p>Tech Stack</p>
+    <p className="text-lg md:text-xl text-center mb-12">
+      <span className="text-subtitle">My Skills</span>
+      <br />
+      Tech Stack
+    </p>
     <div className="flex flex-wrap justify-around gap-x-6 gap-y-8 [&_svg]:max-w-[16rem]">
       <div className="flex flex-col items-center">
         <JavaScript className="w-8 h-8" />
